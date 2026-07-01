@@ -1,0 +1,64 @@
+.wall {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  background: #202124;
+}
+
+.viewer {
+  position: relative;
+  display: grid;
+  height: 100vh;
+  min-width: 0;
+  overflow: hidden;
+  background: #303134;
+  place-items: center;
+}
+
+.viewer + .viewer {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.viewer canvas {
+  display: block;
+  background: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.viewerStatus {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 14px;
+}
+
+.connection {
+  position: fixed;
+  z-index: 10;
+  top: 8px;
+  right: 8px;
+  padding: 5px 9px;
+  color: white;
+  border-radius: 999px;
+  background: rgba(180, 52, 52, 0.78);
+  font-size: 11px;
+  opacity: 0.72;
+}
+
+.connection[data-online="true"] {
+  background: rgba(20, 120, 83, 0.78);
+}
+
+@media (max-width: 760px) {
+  .wall {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .viewer + .viewer {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 0;
+  }
+}
