@@ -30,12 +30,18 @@ export function ControlCenter({ options }: ControlCenterProps) {
   }
 
   useEffect(() => {
-    void syncState();
+    const initialTimer = setTimeout(() => {
+      void syncState();
+    }, 0);
     const interval = setInterval(() => {
       void syncState();
     }, 1500);
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
   }, []);
+
 
   const selectedOption =
     options.find((opt) => opt.pdfId === systemState?.activePdfId) ?? null;
