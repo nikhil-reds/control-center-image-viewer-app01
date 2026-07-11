@@ -166,70 +166,68 @@ export function ControlCenter({ options }: ControlCenterProps) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/10 via-slate-950 to-slate-950 pointer-events-none" />
       <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-[120px] pointer-events-none animate-pulse-glow" />
 
-      {/* Top Header */}
-      <header className="relative w-full max-w-7xl mx-auto flex items-center justify-between pb-6 mb-8 border-b border-white/5 z-10">
-        <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 text-xs font-mono font-bold tracking-wider"
-          >
-            &larr; PORTAL HOME
-          </Link>
-          <span className="text-slate-700">|</span>
-          <h1 className="text-sm font-bold tracking-[0.1em] text-white">
-            OPERATOR CONSOLE
-          </h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="text-xs font-mono text-slate-400">SYSTEM ONLINE</span>
-        </div>
-      </header>
-
-      {/* Main Dual Pane Section */}
-      <section className="relative w-full max-w-7xl mx-auto flex-grow grid md:grid-cols-12 gap-8 z-10">
-        {/* Left Side: Module Selector Sidebar */}
-        <div
-          className={`md:col-span-4 lg:col-span-3 flex flex-col gap-4 ${
-            selectedOption ? "hidden md:flex" : "flex"
-          }`}
-        >
-          <span className="text-xs font-mono font-semibold text-slate-500 uppercase tracking-wider px-1">
-            Projection Modules
-          </span>
-          <div className="flex flex-col gap-3">
-            {options.map((option) => (
-              <ControlCard
-                key={option.id}
-                option={option}
-                isActive={selectedOption?.id === option.id}
-                isDisabled={isSending}
-                onSelect={() => void selectOption(option)}
-              />
-            ))}
+      {/* Top Header - Hidden when a module is active */}
+      {!selectedOption && (
+        <header className="relative w-full max-w-7xl mx-auto flex items-center justify-between pb-6 mb-8 border-b border-white/5 z-10">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 text-xs font-mono font-bold tracking-wider"
+            >
+              &larr; PORTAL HOME
+            </Link>
+            <span className="text-slate-700">|</span>
+            <h1 className="text-sm font-bold tracking-[0.1em] text-white">
+              OPERATOR CONSOLE
+            </h1>
           </div>
-        </div>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-xs font-mono text-slate-400">SYSTEM ONLINE</span>
+          </div>
+        </header>
+      )}
 
-        {/* Right Side: Active Controller Detail Console */}
-        <div
-          className={`md:col-span-8 lg:col-span-9 rounded-3xl border border-white/5 bg-slate-900/10 backdrop-blur-xl p-6 md:p-8 min-h-[420px] flex items-center justify-center ${
-            !selectedOption ? "hidden md:flex" : "flex"
-          }`}
-        >
-          {selectedOption ? (
-            <DetailScreen
-              option={selectedOption}
-              currentPage={currentPage}
-              isSending={isSending}
-              status={status}
-              onNavigate={sendCommand}
-              onPlayback={sendPlayback}
-              onBack={closePreview}
-            />
-          ) : (
+      {/* Main Content Area */}
+      {selectedOption ? (
+        /* When active: Show ONLY the DetailScreen buttons centered on the page */
+        <div className="relative w-full max-w-3xl mx-auto flex-grow flex items-center justify-center z-10">
+          <DetailScreen
+            option={selectedOption}
+            currentPage={currentPage}
+            isSending={isSending}
+            status={status}
+            onNavigate={sendCommand}
+            onPlayback={sendPlayback}
+            onBack={closePreview}
+          />
+        </div>
+      ) : (
+        /* When inactive: Show sidebar selector and standby module layout */
+        <section className="relative w-full max-w-7xl mx-auto flex-grow grid md:grid-cols-12 gap-8 z-10">
+          {/* Left Side: Module Selector Sidebar */}
+          <div className="col-span-full md:col-span-4 lg:col-span-3 flex flex-col gap-4">
+            <span className="text-xs font-mono font-semibold text-slate-500 uppercase tracking-wider px-1">
+              Projection Modules
+            </span>
+            <div className="flex flex-col gap-3">
+              {options.map((option) => (
+                <ControlCard
+                  key={option.id}
+                  option={option}
+                  isActive={false}
+                  isDisabled={isSending}
+                  onSelect={() => void selectOption(option)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side: Standby Desk (Hidden on mobile for clean screen view) */}
+          <div className="hidden md:flex md:col-span-8 lg:col-span-9 rounded-3xl border border-white/5 bg-slate-900/10 backdrop-blur-xl p-6 md:p-8 min-h-[420px] items-center justify-center">
             <div className="flex flex-col items-center justify-center text-center p-8 max-w-md space-y-4">
               <div className="w-16 h-16 rounded-full border border-dashed border-slate-700 flex items-center justify-center text-slate-600 animate-pulse-glow">
                 <svg
@@ -253,10 +251,11 @@ export function ControlCenter({ options }: ControlCenterProps) {
                 Click a module on the left side menu to project its schematics on the display wall and launch the tactile navigation console.
               </p>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
+
 
