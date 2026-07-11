@@ -37,17 +37,7 @@ export function DetailScreen({
   return (
     <div className="w-full flex flex-col gap-6 md:gap-8">
       {/* Top action bar */}
-      <div className="flex items-center justify-between pb-4 border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
-          </span>
-          <span className="text-xs font-mono tracking-widest text-cyan-400 uppercase">
-            LIVE PROJECTION ENGAGED
-          </span>
-        </div>
-
+      <div className="flex justify-end pb-4 border-b border-white/5">
         <button
           type="button"
           disabled={isSending}
@@ -57,6 +47,7 @@ export function DetailScreen({
           RELEASE SCREEN (RESET)
         </button>
       </div>
+
 
       {/* Screen Meta Title */}
       <div>
