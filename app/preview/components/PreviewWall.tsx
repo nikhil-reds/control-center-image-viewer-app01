@@ -8,7 +8,6 @@ import {
 } from "@/lib/pdf-control";
 import styles from "../preview.module.css";
 import { ImageViewer } from "./ImageViewer";
-import { VideoViewer } from "./VideoViewer";
 
 const initialPages = Object.fromEntries(
   mediaDocuments.map((document) => [document.id, 1]),
@@ -55,9 +54,7 @@ export function PreviewWall() {
 
   return (
     <main className={styles.wall}>
-      {activeDocument?.kind === "video" ? (
-        <VideoViewer src={activeDocument.src} playing={videoPlaying} />
-      ) : activeDocument?.kind === "images" ? (
+      {activeDocument?.kind === "images" ? (
         <ImageViewer
           images={activeDocument.images}
           pageNumber={pages[activeDocument.id]}
