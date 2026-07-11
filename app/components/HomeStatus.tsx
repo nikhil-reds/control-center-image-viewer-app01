@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { controlOptions, type ControlOption } from "../control-center/control-options";
-import { mediaDocuments, type PdfRemoteState, type PdfId } from "@/lib/pdf-control";
+import { controlOptions } from "../control-center/control-options";
+import { mediaDocuments, type PdfRemoteState } from "@/lib/pdf-control";
 
 export function HomeStatus() {
   const [systemState, setSystemState] = useState<PdfRemoteState | null>(null);
@@ -26,11 +26,16 @@ export function HomeStatus() {
   }
 
   useEffect(() => {
-    void fetchStatus();
+    const initialTimer = setTimeout(() => {
+      void fetchStatus();
+    }, 0);
     const interval = setInterval(() => {
       void fetchStatus();
     }, 1500);
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
   }, []);
 
   const activeOption = controlOptions.find((opt) => opt.pdfId === systemState?.activePdfId);
@@ -231,5 +236,6 @@ export function HomeStatus() {
           })}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
