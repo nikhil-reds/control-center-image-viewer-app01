@@ -19,14 +19,6 @@ export const controlOptions: ControlOption[] = [
     controlKind: "pages",
   },
   {
-    id: "mobile-treatment-unit",
-    pdfId: "pdf-2",
-    label: "Video",
-    shortName: "Video",
-    tagline: "Portable treatment. Lasting impact.",
-    controlKind: "video",
-  },
-  {
     id: "onsite-treatment-plant",
     pdfId: "pdf-3",
     label: "What lies inside?",

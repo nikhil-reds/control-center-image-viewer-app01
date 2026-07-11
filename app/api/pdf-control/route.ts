@@ -81,16 +81,7 @@ export async function POST(request: Request) {
 
   if (body.action === "activate" && isPdfId(body.pdfId)) {
     state.activePdfId = body.pdfId;
-    state.videoPlaying = body.pdfId === "pdf-2";
-    return json(state);
-  }
-
-  if (
-    body.action === "playback" &&
-    state.activePdfId === "pdf-2" &&
-    (body.playback === "play" || body.playback === "pause")
-  ) {
-    state.videoPlaying = body.playback === "play";
+    state.videoPlaying = false;
     return json(state);
   }
 

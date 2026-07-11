@@ -6,7 +6,6 @@ export const mediaDocuments = [
       "/button01/Dasra%20%20NFSSM%20TDP__916%20and%20169%20%281%29.jpg",
     ],
   },
-  { id: "pdf-2", kind: "video", src: "/video/video002.mp4" },
   {
     id: "pdf-3",
     kind: "images",
