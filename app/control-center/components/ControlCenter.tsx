@@ -206,53 +206,30 @@ export function ControlCenter({ options }: ControlCenterProps) {
           />
         </div>
       ) : (
-        /* When inactive: Show sidebar selector and standby module layout */
-        <section className="relative w-full max-w-7xl mx-auto flex-grow grid md:grid-cols-12 gap-8 z-10">
-          {/* Left Side: Module Selector Sidebar */}
-          <div className="col-span-full md:col-span-4 lg:col-span-3 flex flex-col gap-4">
-            <span className="text-xs font-mono font-semibold text-slate-500 uppercase tracking-wider px-1">
-              Projection Modules
-            </span>
-            <div className="flex flex-col gap-3">
-              {options.map((option) => (
+        /* When inactive: Show the three buttons in a flex row centered on the screen */
+        <div className="relative w-full max-w-5xl mx-auto flex-grow flex flex-col justify-center items-center gap-8 z-10">
+          <div className="text-center space-y-2 select-none">
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+              Select Projection Module
+            </h2>
+            <p className="text-slate-400 text-xs font-mono uppercase tracking-widest">
+              Project active schematics to the screen wall
+            </p>
+          </div>
+          
+          <div className="w-full flex flex-col sm:flex-row gap-6 justify-center items-stretch">
+            {options.map((option) => (
+              <div key={option.id} className="flex-1 min-w-[260px]">
                 <ControlCard
-                  key={option.id}
                   option={option}
                   isActive={false}
                   isDisabled={isSending}
                   onSelect={() => void selectOption(option)}
                 />
-              ))}
-            </div>
-          </div>
-
-          {/* Right Side: Standby Desk (Hidden on mobile for clean screen view) */}
-          <div className="hidden md:flex md:col-span-8 lg:col-span-9 rounded-3xl border border-white/5 bg-slate-900/10 backdrop-blur-xl p-6 md:p-8 min-h-[420px] items-center justify-center">
-            <div className="flex flex-col items-center justify-center text-center p-8 max-w-md space-y-4">
-              <div className="w-16 h-16 rounded-full border border-dashed border-slate-700 flex items-center justify-center text-slate-600 animate-pulse-glow">
-                <svg
-                  className="w-8 h-8 text-cyan-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                  />
-                </svg>
               </div>
-              <h2 className="text-xl font-bold text-white tracking-tight">
-                No Module Active
-              </h2>
-              <p className="text-slate-400 text-sm font-light leading-relaxed">
-                Click a module on the left side menu to project its schematics on the display wall and launch the tactile navigation console.
-              </p>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
       )}
     </main>
   );
