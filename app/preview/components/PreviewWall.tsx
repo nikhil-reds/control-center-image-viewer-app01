@@ -81,7 +81,7 @@ function PreviewSplash() {
         preload="auto"
         aria-hidden="true"
       >
-        <source src="/BG-VIDEO/gates-zone-one-title-page.mp4" type="video/mp4" />
+        <source src="/BG-VIDEO/Gates%20zone%201.0%20updated.mp4" type="video/mp4" />
       </video>
     </section>
   );
