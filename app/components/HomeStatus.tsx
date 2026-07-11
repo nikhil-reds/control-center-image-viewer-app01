@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { controlOptions } from "../control-center/control-options";
-import { mediaDocuments, type PdfRemoteState } from "@/lib/pdf-control";
+import { type PdfRemoteState } from "@/lib/pdf-control";
 
 export function HomeStatus() {
   const [systemState, setSystemState] = useState<PdfRemoteState | null>(null);
@@ -177,65 +177,7 @@ export function HomeStatus() {
         </a>
       </div>
 
-      {/* Module Overview Console */}
-      <div className="p-6 md:p-8 bg-slate-900/20 backdrop-blur-md border border-white/5 rounded-3xl shadow-lg space-y-6">
-        <div>
-          <h3 className="text-lg font-bold text-white tracking-wide">System Modules & Media State</h3>
-          <p className="text-slate-400 text-xs mt-1 font-mono">Real-time status register for connected documents</p>
-        </div>
-
-        <div className="grid sm:grid-cols-3 gap-6">
-          {controlOptions.map((option) => {
-            const docDef = mediaDocuments.find((doc) => doc.id === option.pdfId);
-            const currentDocState = systemState?.documents[option.pdfId];
-            const pageNum = currentDocState?.page ?? 1;
-            const totalPages = docDef?.images?.length ?? 4;
-            const isActive = systemState?.activePdfId === option.pdfId;
-
-            return (
-              <div
-                key={option.id}
-                className={`p-5 rounded-2xl border transition-all duration-300 ${
-                  isActive
-                    ? "bg-gradient-to-br from-cyan-950/20 to-slate-900/60 border-cyan-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_20px_rgba(6,182,212,0.05)]"
-                    : "bg-slate-900/30 border-white/5"
-                }`}
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-xs font-mono font-semibold text-slate-500 tracking-wider">
-                      {option.pdfId.toUpperCase()}
-                    </span>
-                    <h4 className="text-base font-bold text-white mt-1">{option.label}</h4>
-                  </div>
-                  {isActive ? (
-                    <span className="px-2 py-0.5 text-[10px] font-mono font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-400/20 rounded-md animate-pulse">
-                      LIVE
-                    </span>
-                  ) : (
-                    <span className="px-2 py-0.5 text-[10px] font-mono text-slate-500 bg-white/5 border border-white/5 rounded-md">
-                      STANDBY
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-xs text-slate-400 mt-2 line-clamp-1">{option.tagline}</p>
-
-                <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-xs font-mono text-slate-400">Position</span>
-                  {systemState ? (
-                    <span className="text-xs font-mono font-bold text-white">
-                      Slide {pageNum} of {totalPages}
-                    </span>
-                  ) : (
-                    <span className="w-10 h-3 bg-white/5 animate-pulse rounded"></span>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </div>
+
   );
 }
