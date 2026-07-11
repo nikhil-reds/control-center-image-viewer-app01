@@ -30,6 +30,7 @@ export const mediaDocuments = [
       "/button04/12.jpg",
       "/button04/13.jpg",
       "/button04/14.jpg",
+      "/button04/15.jpg",
     ],
   },
 ] as const;
