@@ -23,6 +23,8 @@ export const mediaDocuments = [
     id: "pdf-3",
     kind: "images",
     images: [
+      "/STP/34.jpg",
+      "/STP/35.jpg",
       "/STP/36.jpg",
       "/STP/37.jpg",
       "/STP/38.jpg",
