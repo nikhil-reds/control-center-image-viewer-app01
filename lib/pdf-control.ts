@@ -3,20 +3,20 @@ export const mediaDocuments = [
     id: "pdf-1",
     kind: "images",
     images: [
-      "/CRT/5.png",
-      "/CRT/6.png",
-      "/CRT/7.png",
-      "/CRT/8.png",
+      "/CRT/26.jpg",
+      "/CRT/27.jpg",
+      "/CRT/28.jpg",
+      "/CRT/29.jpg",
     ],
   },
   {
     id: "pdf-2",
     kind: "images",
     images: [
-      "/MTU/1.png",
-      "/MTU/2.png",
-      "/MTU/3.png",
-      "/MTU/4.png",
+      "/MTU/30.jpg",
+      "/MTU/31.jpg",
+      "/MTU/32.jpg",
+      "/MTU/33.jpg",
     ],
   },
   {
