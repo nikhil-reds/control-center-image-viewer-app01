@@ -55,12 +55,12 @@ export default function MtuControlPage() {
       
       {/* Floating Back Link to Portal */}
       <div className="absolute top-6 left-6 z-10">
-        <Link 
-          href="/control-center" 
+        <a 
+          href="https://gates.framer.website/zone-2/zone-2-main" 
           className="text-xs font-mono tracking-widest text-slate-500 hover:text-teal-400 transition-colors uppercase"
         >
-          &larr; Control Center Home
-        </Link>
+          &larr; BACK
+        </a>
       </div>
 
       <div className="relative z-10 flex flex-col items-center max-w-4xl px-6 text-center space-y-6">
