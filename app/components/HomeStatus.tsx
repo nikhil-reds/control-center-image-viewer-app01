@@ -218,7 +218,7 @@ export function HomeStatus() {
                 STP Console
               </h2>
               <p className="text-xs text-slate-400 leading-relaxed font-light">
-                Onsite Treatment Plant. Onsite Treatment. Lasting Impact. Visualise sludge management biological reactors and effluent clarifier systems.
+                Packaged Treatment Plant. Packaged Treatment. Lasting Impact. Visualise sludge management biological reactors and effluent clarifier systems.
               </p>
               <div className="pt-2 flex items-center gap-2 text-xs font-mono text-slate-500">
                 <span>Slide page:</span>

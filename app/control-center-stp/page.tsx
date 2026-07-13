@@ -67,12 +67,12 @@ export default function StpControlPage() {
         
         {/* Large uppercase title with tracking matching the screenshot */}
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-[0.25em] text-[#a7f3d0] leading-tight select-none">
-          ONSITE TREATMENT PLANT
+          PACKAGED TREATMENT PLANT
         </h1>
         
         {/* Subtitle / Tagline */}
         <p className="text-xs md:text-sm text-slate-400 font-light tracking-wide max-w-lg">
-          Onsite Treatment. Lasting Impact.
+          Packaged Treatment. Lasting Impact.
         </p>
 
         {/* Circular buttons side-by-side */}
