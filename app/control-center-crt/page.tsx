@@ -56,7 +56,7 @@ export default function CrtControlPage() {
       {/* Floating Back Link to Portal */}
       <div className="absolute top-6 left-6 z-10">
         <a 
-          href="https://gates.framer.website/zone-2/zone-2-main" 
+          href="https://gates.framer.website/zone-2/zone-2-main#section2"
           className="text-xs font-mono tracking-widest text-slate-500 hover:text-teal-400 transition-colors uppercase"
         >
           &larr; BACK
