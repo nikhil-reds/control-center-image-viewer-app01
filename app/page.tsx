@@ -19,7 +19,6 @@ export default function Home() {
       {/* Top Header Branding */}
       <header className="relative w-full max-w-6xl mx-auto flex items-center justify-between z-10">
         <div className="flex items-center gap-2">
-          <span className="text-xl font-black tracking-[0.25em] text-white">RUBENIUS</span>
           <span className="text-[10px] text-cyan-400 font-mono border border-cyan-400/30 px-2 py-0.5 rounded-full bg-cyan-950/30">
             v1.1
           </span>
@@ -53,6 +52,7 @@ export default function Home() {
       <footer className="relative w-full max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 z-10 text-xs font-mono text-slate-500">
         <p>&copy; {new Date().getFullYear()} Rubenius. All rights reserved.</p>
         <div className="flex gap-6">
+          <a href="/admin" className="hover:text-cyan-400 transition-colors">Admin Console</a>
           <a href="/control-center" className="hover:text-cyan-400 transition-colors">Control Center</a>
           <a href="/preview" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">Preview Wall</a>
         </div>
